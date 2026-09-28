@@ -1,0 +1,25 @@
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+7 ?- consult(['c:/Users/Dell/Downloads/Lab04_family_facts.pl']).
+true.
+
+8 ?- female(X).
+X = sara .
+
+9 ?- male(_).
+true .
+
+10 ?- female(X).
+X = sara ;
+X = nora.
+
+11 ?- grandparent(X, faisal).
+ERROR: Unknown procedure: grandparent/2 (DWIM could not correct goal)
+12 ?- daughter(X, ahmad).
+ERROR: Unknown procedure: daughter/2 (DWIM could not correct goal)
+13 ?- parent(P, ahmad), parent(P, muhammad).
+P = ali.
+
+14 ?- brother(khan, nora).
+ERROR: Unknown procedure: brother/2 (DWIM could not correct goal)

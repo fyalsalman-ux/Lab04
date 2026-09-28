@@ -1,0 +1,42 @@
+ ?- house = house.
+true.
+ % Two plain values: Two atoms or numbers unify only if they are identical. 
+
+ ?- house = abc.
+false.
+% Two plain values: Fail because house and abc are different atoms (not identical).  
+
+ ?- edge(a, b) = edge(C, b).
+C = a.
+% Variable and a value / Any term: C is instantiated with the value 'a', and 'b' matches 'b'.  
+
+ ?- edge(a, d) = edge(C, B).
+C = a,
+B=d.
+ % Variable and any term: Variables C and B are instantiated to match the atoms 'a' and 'd'.  
+
+ ?- edge(C, B) = edge(a, d).
+C = a,
+B=d.
+ % Variable and any term: Symmetric unification instantiates C = a and B = d.  
+
+ ?- edge(A, f(g,h)) = edge(a, B).
+A = a,
+B = f(g, h).
+% Structure and Variable mismatch: Cannot unify a complex structure with incompatible terms directly.  
+
+ ?- edge(A, A) = edge(b, c).
+false.
+% Instantiation conflict: A variable cannot be instantiated to two different values ('b' and 'c') at the same time.  
+
+ ?- edge(A, A) = edge(b, b).
+A=b.
+ % Variable and a value: A successfully unifies with 'b' in both occurrences.   
+
+ ?- A = B, B = f.
+A = B, B = f.
+ % Variable and another variable: A and B become linked, then both are instantiated to the atom 'f'.  
+
+ ?- A = B, B = f, A = e.
+false.
+ % Instantiation conflict: A is already instantiated to 'f', so it cannot be re-instantiated to 'e'.   
